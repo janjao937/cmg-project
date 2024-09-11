@@ -103,8 +103,8 @@ RectTransform:
   m_GameObject: {fileID: 4762660545208675289}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4366881766179950456}
   m_Father: {fileID: 0}
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8ed442bf9a3f24aa023769d50546c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  faceSprite: {fileID: -2063988093, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
   backSprite: {fileID: 1682312703, guid: 2e6eafb6f26ea0a4dac2f594e3e0c6fa, type: 3}
   cardObj: {fileID: 4229051129185741322}
-  canFlip: 1
+  playerSelected: {fileID: 0}
+  isFace: 0

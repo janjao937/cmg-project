@@ -13,7 +13,7 @@ public class Card : MonoBehaviour,IPointerDownHandler
    [SerializeField]private bool isFace = false;
 
    private Image cardImg;
-   [SerializeField]private int spriteIndex = 0;
+   private int spriteIndex = 0;
 
    public PlayerSelected SetPlayerSelected{set=>playerSelected = value;}
    public int SpriteIndex {get=>spriteIndex;set=>spriteIndex = value;}
@@ -59,9 +59,12 @@ public class Card : MonoBehaviour,IPointerDownHandler
       if(!isFace){
             isFace = !isFace;
          for(float i = 0f;i<=180f;i+=10f){
+             if(cardObj!=null){
             cardObj.transform.rotation = Quaternion.Euler(0f,i,0f);
+
+             }
             if(i==90f){
-               cardImg.sprite = faceSprite;
+              if(cardImg!=null) cardImg.sprite = faceSprite;
             }
             yield return new WaitForSeconds(0.02f);
          }
@@ -69,9 +72,12 @@ public class Card : MonoBehaviour,IPointerDownHandler
       else if(isFace){
             isFace = !isFace;
          for(float i = 180f;i>=0;i-=10f){
+            if(cardObj!=null){
             cardObj.transform.rotation = Quaternion.Euler(0f,i,0f);
+
+            }
             if(i==90f){
-               cardImg.sprite = backSprite;
+               if(cardImg!=null)cardImg.sprite = backSprite;
             }
             yield return new WaitForSeconds(0.02f);
          }
@@ -80,7 +86,11 @@ public class Card : MonoBehaviour,IPointerDownHandler
    
       
    }
-
+void OnDestroy()
+{
+   cardObj=null;
+   StopAllCoroutines();
+}
 //refactor function
 // public IEnumerator RefactorFlipCard(){
 //       canFlip = false;

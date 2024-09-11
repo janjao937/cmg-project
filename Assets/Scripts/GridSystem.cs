@@ -29,8 +29,14 @@ public class GridSystem : MonoBehaviour
         isSetUp =true;
     }
     public void ClearGrid(){
+        playerSelected.Reset();
+        // foreach(Card card in allCard){
+        //     card.StopAllCoroutines();
+        // }
         allCard.Clear();
         for (int i = 0;i<board.childCount;i++){
+            // board.GetChild(i).gameObject.GetComponentInChildren<Card>().StopAllCoroutines();//Testtttttttttttttttt
+            board.GetChild(i).gameObject.SetActive(false);
             Destroy(board.GetChild(i).gameObject);
         }
     }

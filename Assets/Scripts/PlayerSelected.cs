@@ -20,16 +20,16 @@ public class PlayerSelected : MonoBehaviour
     }
     public void CheckResult(){
         if(SelectedCards[0].SpriteIndex == SelectedCards[1].SpriteIndex){
-            Debug.Log("Match");
+            // match
             OnMatch?.Invoke(true);
             SelectedCards.Clear();
         }
         else{
-            OnMatch(false);
+           OnMatch?.Invoke(false);
            StartCoroutine(ClearSelected());
-          
         }
     }
+    public void Reset()=>SelectedCards.Clear();
     private IEnumerator ClearSelected(){
         canSelect = false;
         yield return new WaitForSeconds(0.5f);
