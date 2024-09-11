@@ -7,12 +7,14 @@ public class GridSystem : MonoBehaviour
 {
     [SerializeField] private int col;
     [SerializeField] private int row;
-    [SerializeField] private GameObject cell;
+    [SerializeField] private GameObject card;
    
     [SerializeField] private RectTransform panelCol;
     [SerializeField] private Transform board;
 
+    [SerializeField] private List<GameObject> allCard;
     public void ClearGrid(){
+        allCard.Clear();
         for (int i = 0;i<board.childCount;i++){
             Destroy(board.GetChild(i).gameObject);
         }
@@ -24,7 +26,9 @@ public class GridSystem : MonoBehaviour
             colParent = Instantiate(panelCol,board);
 
             for(int rowIndex= 0;rowIndex<row;rowIndex++){
-                Instantiate(cell,colParent);
+               GameObject current = Instantiate(card,colParent);
+               allCard.Add(current);
+               current.SetActive(false);
             }
         }
     }
