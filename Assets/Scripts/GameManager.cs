@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
         maxScore = ((gridRow*gridCol)/2);
         playerSelected.OnMatch += OnMatch;
 
+        ChangeRowAndCol(2,2);
+
         saveData.Load(uiManager);
    }
     private void OnDisable()
@@ -90,8 +92,28 @@ public class GameManager : MonoBehaviour
     Play();
     saveData.Load(uiManager);
    }
+
+   private void ChangeRowAndCol(int row,int col){
+        this.gridRow = row;
+        this.gridCol = col;
+        uiManager.SetGridSize(this.gridRow, this.gridCol);
+        maxScore = ((gridRow*gridCol)/2);
+   }
   
    public void Home(){
     //go to home
    }
+//BTN function
+   public void ChangeGridToSSize(){
+    ChangeRowAndCol(2,2);
+   }
+
+   public void ChangeGridToMSize(){
+    ChangeRowAndCol(2,3);
+   }
+
+   public void ChangeGridToLSize(){
+    ChangeRowAndCol(5,6);
+   }
+   
 }
