@@ -5,14 +5,29 @@ using UnityEngine.UI;
 
 public class GridSystem : MonoBehaviour
 {
-    [SerializeField] private int col;
-    [SerializeField] private int row;
+    private int col;
+    private int row;
     [SerializeField] private GameObject card;
    
     [SerializeField] private RectTransform panelCol;
     [SerializeField] private Transform board;
+    [SerializeField] private List<Card> allCard;
+    private bool isSetUp = false;
+    private PlayerSelected playerSelected;
 
-    [SerializeField] private List<GameObject> allCard;
+
+    public List<Card> GetAllCard {get=>allCard;}
+    private void Awake()
+    {
+        isSetUp = false;
+    }
+    
+    public void SetUp(PlayerSelected playerSelected,int row,int col){
+        this.playerSelected = playerSelected;
+        this.row = row;
+        this.col = col;
+        isSetUp =true;
+    }
     public void ClearGrid(){
         allCard.Clear();
         for (int i = 0;i<board.childCount;i++){
@@ -20,15 +35,19 @@ public class GridSystem : MonoBehaviour
         }
     }
     public void GenerateGrid(){
+        if(!isSetUp){
+            Debug.Log("Plz setup gridSystem");
+            return;
+        }
         ClearGrid();
         RectTransform colParent;
         for(int colIndex = 0;colIndex<col;colIndex++){
             colParent = Instantiate(panelCol,board);
 
             for(int rowIndex= 0;rowIndex<row;rowIndex++){
-               GameObject current = Instantiate(card,colParent);
+               Card current = Instantiate(card,colParent).GetComponent<Card>();
+               current.SetPlayerSelected = playerSelected;
                allCard.Add(current);
-               current.SetActive(false);
             }
         }
     }

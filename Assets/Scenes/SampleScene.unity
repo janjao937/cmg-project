@@ -207,8 +207,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1999684784}
-        m_TargetAssemblyTypeName: GridSystem, Assembly-CSharp
+      - m_Target: {fileID: 1186825332}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: GenerateGrid
         m_Mode: 1
         m_Arguments:
@@ -603,9 +603,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9ef5d851841954a89526dacc9ebf2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridCol: 0
-  gridRow: 0
+  gridCol: 6
+  gridRow: 5
+  allSpriteList:
+  - {fileID: -442202885, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
+  - {fileID: -503750038, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
+  - {fileID: 1150438872, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
+  - {fileID: -2063988093, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
+  - {fileID: 776746820, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
+  - {fileID: 637383594, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
+  - {fileID: 198393918, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
+  - {fileID: -921775815, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
+  - {fileID: -2101127475, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
+  - {fileID: -1060483690, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
+  - {fileID: -959092799, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
+  - {fileID: -2105771707, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
+  - {fileID: -1406323750, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
+  - {fileID: 1722805049, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
+  - {fileID: -2101949533, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
+  - {fileID: -2021646724, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
+  - {fileID: 1604930738, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
+  - {fileID: -1236209009, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
+  - {fileID: 602750755, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
+  - {fileID: -205750699, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
+  - {fileID: 1338048406, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
+  - {fileID: -1188551088, guid: 5b22b467e29b6c744856c42995e6a58c, type: 3}
   gridSystem: {fileID: 1999684784}
+  playerSelected: {fileID: 1298130706}
 --- !u!4 &1186825333
 Transform:
   m_ObjectHideFlags: 0
@@ -620,6 +644,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1298130705
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1298130707}
+  - component: {fileID: 1298130706}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1298130706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298130705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 976c1a2ee8c3f144e8becfe40707acb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectedCards: []
+  canSelect: 1
+--- !u!4 &1298130707
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298130705}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.6647608, y: 1.5447255, z: 32.7476}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1550705841
 GameObject:
