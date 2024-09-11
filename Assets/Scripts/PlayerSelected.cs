@@ -19,12 +19,10 @@ public class PlayerSelected : MonoBehaviour
         canSelect = true;
     }
     public void CheckResult(){
-        string firstSpriteName = SelectedCards[0]?.GetComponentInChildren<Image>().sprite.name;
-        string secoundSpriteName = SelectedCards[1]?.GetComponentInChildren<Image>().sprite.name;
-
-        if(firstSpriteName == secoundSpriteName){
+        if(SelectedCards[0].SpriteIndex == SelectedCards[1].SpriteIndex){
             Debug.Log("Match");
             OnMatch?.Invoke(true);
+            SelectedCards.Clear();
         }
         else{
             OnMatch(false);

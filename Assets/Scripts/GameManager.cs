@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         int checkHaveMatch =0;
         for(int i = 0;i<rndCardOrder.Count;i++){
             gridSystem.GetAllCard[rndCardOrder[i]].SetFaceSprite(allSpriteList[countSpriteIndex]);
+            gridSystem.GetAllCard[rndCardOrder[i]].SpriteIndex=countSpriteIndex;
             checkHaveMatch++;
             if(checkHaveMatch>=2){
                 countSpriteIndex++;

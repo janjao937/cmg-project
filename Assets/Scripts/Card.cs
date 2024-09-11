@@ -6,16 +6,17 @@ using UnityEngine.UI;
 
 public class Card : MonoBehaviour,IPointerDownHandler
 {
-   private Sprite faceSprite;
    [SerializeField] private Sprite backSprite;
+   private Sprite faceSprite;
    [SerializeField] private GameObject cardObj;
    [SerializeField] private PlayerSelected playerSelected;
-   private Image cardImg;
    [SerializeField]private bool isFace = false;
 
-   // private bool canFlip = true;
-   public PlayerSelected SetPlayerSelected{set=>playerSelected = value;}
+   private Image cardImg;
+   [SerializeField]private int spriteIndex = 0;
 
+   public PlayerSelected SetPlayerSelected{set=>playerSelected = value;}
+   public int SpriteIndex {get=>spriteIndex;set=>spriteIndex = value;}
    public Sprite GetFaceSprite {get =>faceSprite;}//for check sprite on GameManager
 
    private void Awake()
