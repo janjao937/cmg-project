@@ -37,7 +37,6 @@ public class Card : MonoBehaviour,IPointerDownHandler
    }
 
    private void OnClickCard(){
-      //   Debug.Log($"Click this card {this.gameObject.name}");
         if(playerSelected.canSelect){
          if(playerSelected.SelectedCards.Count==0){
             playerSelected.SelectedCards.Add(this);
@@ -93,32 +92,4 @@ void OnDestroy()
    cardObj=null;
    StopAllCoroutines();
 }
-//refactor function
-// public IEnumerator RefactorFlipCard(){
-//       canFlip = false;
-//       float rotateY = 0;
-//       float maxRotateY = 0;
-//       Sprite nextSprite;
-//       if(!isFace){
-//           maxRotateY= 180f;
-//           rotateY = 10f;
-//           nextSprite = faceSprite;
-//       }
-//       else{
-//          maxRotateY = -180f;
-//          rotateY = -10f;
-//          nextSprite = backSprite;
-//       }
-//          for(float i = 0f;i<=maxRotateY;i+=rotateY){
-//             cardObj.transform.rotation = Quaternion.Euler(0f,i,0f);
-//             if(i==90){
-//                cardImg.sprite = nextSprite;
-//             }
-//             yield return new WaitForSeconds(0.05f);
-//          }
-//       canFlip = true;
-//       isFace = !isFace;
-      
-//    }
-
 }

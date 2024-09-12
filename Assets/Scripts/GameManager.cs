@@ -69,7 +69,6 @@ public class GameManager : MonoBehaviour
 
    private void OnMatch(bool isMatch){
         if(isMatch){
-            //  Debug.Log("Match"+isMatch);
             //score++
              playerData.AddScore();
              uiManager.SetCurrentScoreText(playerData.Score);
@@ -78,7 +77,6 @@ public class GameManager : MonoBehaviour
              }
         }
         else{
-            //  Debug.Log("Not Match"+isMatch);
             //turn++
             playerData.AddTurn();
             uiManager.SetCurrentTurnText(playerData.Turn);

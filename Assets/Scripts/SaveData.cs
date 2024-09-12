@@ -6,10 +6,6 @@ using UnityEngine;
 public class SaveData : MonoBehaviour
 {
     public void Save(PlayerData playerData){
-        // Debug.Log("GameEnd");
-        // Debug.Log("Score: "+playerData.Score);
-        // Debug.Log("Turn: "+playerData.Turn);
-
         //Save Json
         Data data = new Data(playerData.Score,playerData.Turn);
         string json  = JsonUtility.ToJson(data);
@@ -27,7 +23,6 @@ public class SaveData : MonoBehaviour
 
             Data data = JsonUtility.FromJson<Data>(json);
             uiManager.SetLatestText(data.Score,data.Turn);
-            // player?.SetPlayerData(data.Name,data.Score);
         }else{
             Debug.Log("file does not exits");
              uiManager.SetLatestText(0,0);

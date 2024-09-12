@@ -34,7 +34,6 @@ public class PlayerSelected : MonoBehaviour
         canSelect = false;
         yield return new WaitForSeconds(0.5f);
         foreach(Card card in SelectedCards){
-            // card.StopAllCoroutines();
             StartCoroutine(card.FlipCard());
            
         }
