@@ -6,17 +6,18 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     // public static GameManager Instance { get; private set;}
-
+    [SerializeField] private UiManager uiManager;
     [SerializeField]private int gridCol;
     [SerializeField]private int gridRow;
     [SerializeField] private List<Sprite> allSpriteList = new List<Sprite>();
     [SerializeField] private GridSystem gridSystem;
     [SerializeField] private GameObject player;
     [SerializeField] private SaveData saveData;
-    [SerializeField] private UiManager uiManager;
+   
 
     private PlayerSelected playerSelected;
     private PlayerData playerData;
+    private float gameEndDelay = 0.5f;
 
     [SerializeField]private int maxScore =default;
 
@@ -35,6 +36,13 @@ public class GameManager : MonoBehaviour
 
         saveData.Load(uiManager);
    }
+
+   private void Start()
+   {
+        SoundManager.Instance.PlayBGM(Sound.BGM);
+   }
+
+
     private void OnDisable()
     {
         playerSelected.OnMatch -= OnMatch;
@@ -77,18 +85,27 @@ public class GameManager : MonoBehaviour
         }
    }
     public void Play(){
+        uiManager.SetHomePanel(false);
         //GenerateGrid
         GenerateGrid();
         playerData.ResetScore();
         uiManager.ResetCurrent();
     }
-   public void GameEnd(){
+   public void GameEnd()
+   {
    
+    StartCoroutine(DelayEndGame());
     saveData.Save(this.playerData);//save
     
    }
+   private IEnumerator DelayEndGame(){
+        yield return new WaitForSeconds(gameEndDelay);
+        SoundManager.Instance?.PlaySFX(Sound.GAME_END);
+        uiManager.SetRestartPanel(true,playerData.Score,playerData.Turn);
+   }
    public void Restart(){
     //new game
+    uiManager.SetRestartPanel(false,0,0);
     Play();
     saveData.Load(uiManager);
    }
@@ -102,6 +119,8 @@ public class GameManager : MonoBehaviour
   
    public void Home(){
     //go to home
+      uiManager.SetHomePanel(true);
+      uiManager.SetRestartPanel(false,0,0);
    }
 //BTN function
    public void ChangeGridToSSize(){
@@ -116,4 +135,8 @@ public class GameManager : MonoBehaviour
     ChangeRowAndCol(5,6);
    }
    
+   public void BtnClick(){
+     SoundManager.Instance.PlaySFX(Sound.BUTTON_CLICK);
+   }
+ 
 }

@@ -12,6 +12,9 @@ public class UiManager : MonoBehaviour
    [SerializeField] private TextMeshProUGUI turnText;
    [SerializeField] private TextMeshProUGUI gridSizeText;
 
+   [SerializeField] private GameObject restartPanel;
+   [SerializeField] private GameObject homePanel;
+   [SerializeField] private TextMeshProUGUI scoreSummary;
 
    public void SetLatestText(int score,int turn){
     latestScoreText.text = $"Latest Score:{score}";
@@ -29,4 +32,9 @@ public class UiManager : MonoBehaviour
         gridSizeText.text = $"{row}x{col}";
     }
 
+    public void SetHomePanel(bool isActive)=>homePanel.SetActive(isActive);
+    public void SetRestartPanel(bool isActive,int score,int turn){
+        scoreSummary.text =$"Score:{score}|Turn:{turn}";
+        restartPanel.SetActive(isActive);
+    }
 }

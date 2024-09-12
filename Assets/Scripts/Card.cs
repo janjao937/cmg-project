@@ -12,6 +12,7 @@ public class Card : MonoBehaviour,IPointerDownHandler
    [SerializeField] private PlayerSelected playerSelected;
    [SerializeField]private bool isFace = false;
 
+   private float cardRotateSpeed = 0.02f;
    private Image cardImg;
    private int spriteIndex = 0;
 
@@ -36,7 +37,7 @@ public class Card : MonoBehaviour,IPointerDownHandler
    }
 
    private void OnClickCard(){
-        Debug.Log($"Click this card {this.gameObject.name}");
+      //   Debug.Log($"Click this card {this.gameObject.name}");
         if(playerSelected.canSelect){
          if(playerSelected.SelectedCards.Count==0){
             playerSelected.SelectedCards.Add(this);
@@ -57,16 +58,17 @@ public class Card : MonoBehaviour,IPointerDownHandler
     
       playerSelected.canSelect = false;
       if(!isFace){
-            isFace = !isFace;
-         for(float i = 0f;i<=180f;i+=10f){
+         SoundManager.Instance?.PlaySFX(Sound.FLIP_CARD);
+         isFace = !isFace;
+         for(float i = 0f;i<=180f;i+=10f)
+         {
              if(cardObj!=null){
-            cardObj.transform.rotation = Quaternion.Euler(0f,i,0f);
-
+               cardObj.transform.rotation = Quaternion.Euler(0f,i,0f);
              }
             if(i==90f){
               if(cardImg!=null) cardImg.sprite = faceSprite;
             }
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(cardRotateSpeed);
          }
       }
       else if(isFace){
@@ -79,7 +81,7 @@ public class Card : MonoBehaviour,IPointerDownHandler
             if(i==90f){
                if(cardImg!=null)cardImg.sprite = backSprite;
             }
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(cardRotateSpeed);
          }
       }
       playerSelected.canSelect  =  true;

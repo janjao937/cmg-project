@@ -6,9 +6,9 @@ using UnityEngine;
 public class SaveData : MonoBehaviour
 {
     public void Save(PlayerData playerData){
-        Debug.Log("GameEnd");
-        Debug.Log("Score: "+playerData.Score);
-        Debug.Log("Turn: "+playerData.Turn);
+        // Debug.Log("GameEnd");
+        // Debug.Log("Score: "+playerData.Score);
+        // Debug.Log("Turn: "+playerData.Turn);
 
         //Save Json
         Data data = new Data(playerData.Score,playerData.Turn);
